@@ -28,7 +28,6 @@ body {
     padding: 20px;
 }
 
-/* LOGO - Aumentada conforme solicitado */
 .logo-intro-wrapper {
     z-index: 50; 
     position: relative;
@@ -36,22 +35,20 @@ body {
 }
 
 .logo-intro {
-    width: 320px; /* Aumentado de 260px para 320px */
+    width: 320px;
     max-width: 90%;
     filter: drop-shadow(0 12px 25px rgba(0,0,0,0.2));
 }
 
-/* PERSONAGENS DA TELA INICIAL - Aumentados e reposicionados */
 .char-intro {
     position: absolute;
-    height: 160px; /* Aumentado de 120px para 160px */
+    height: 160px;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
     pointer-events: none;
     z-index: 5; 
     opacity: 0.95;
 }
 
-/* Posicionamento estratégico para não cobrir a logo mesmo sendo maiores */
 .char-t-l { top: 5%; left: 2%; animation: float 3s infinite ease-in-out; }
 .char-t-r { top: 7%; right: 2%; animation: float 3.5s infinite ease-in-out 0.5s; }
 .char-b-l { bottom: 8%; left: 2%; animation: float 4s infinite ease-in-out 0.2s; }
@@ -75,7 +72,7 @@ body {
     position: relative;
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* --- CONTEÚDO PRINCIPAL (SEGUNDA PÁGINA) --- */
 .main-wrapper {
     background-image: url('back.png');
     background-size: cover;
@@ -90,18 +87,40 @@ body {
 
 .logo-topo { width: 300px; max-width: 90%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); margin-bottom: 20px; }
 
+/* CORREÇÃO DO TRIO DE FOTOS */
 .trio-fotos {
     display: flex; justify-content: center; align-items: center;
-    gap: 15px; margin: 25px 0; width: 100%;
+    gap: 10px; margin: 25px 0; width: 100%;
+    max-width: 400px;
 }
 
 .moldura {
     background: white; padding: 6px; border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
 }
-.moldura img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
-.lateral { width: 95px; height: 95px; }
-.principal { width: 140px; height: 140px; border: 4px solid #ff1493; z-index: 2; }
+
+.moldura img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Garante que a imagem preencha a moldura sem distorcer */
+    border-radius: 14px; 
+}
+
+.lateral { 
+    width: 90px; 
+    height: 90px; 
+    flex-shrink: 0;
+}
+
+.principal { 
+    width: 140px; 
+    height: 140px; 
+    border: 4px solid #ff1493; 
+    z-index: 2; 
+    flex-shrink: 0;
+}
 
 .titulo-script { font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2.3rem; text-shadow: 2px 2px white; margin: 10px 0; }
 .subtitulo { font-size: 1rem; font-weight: 600; color: #ad1457; margin-bottom: 20px; }
@@ -118,9 +137,23 @@ body {
     z-index: 10;
 }
 
-.card-titulo { font-size: 1.2rem; color: #ff1493; font-weight: 800; margin-bottom: 20px; }
-.info-row { display: flex; justify-content: space-around; border-bottom: 2px dashed #ffc1e3; padding-bottom: 20px; margin-bottom: 20px; }
-.button-group { display: flex; gap: 12px; width: 100%; }
+/* CORREÇÃO DOS BRINQUEDOS */
+.brinquedos-container {
+    display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap;
+}
+.brinquedo-item {
+    background: white; padding: 8px; border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 90px; height: 90px;
+    display: flex; align-items: center; justify-content: center;
+    animation: float 3s infinite ease-in-out;
+    overflow: hidden;
+}
+.brinquedo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mantém a proporção dos brinquedos */
+}
 
 .btn {
     flex: 1; text-decoration: none; padding: 16px 5px; border-radius: 20px;
