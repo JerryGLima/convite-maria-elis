@@ -13,8 +13,7 @@ body {
     text-align: center;
 }
 
-/* O overlay deve ser removido via JavaScript para liberar a tela. 
-   Se ele não estiver sumindo, este z-index alto bloqueia tudo. */
+/* --- TELA DE ENTRADA (OVERLAY) --- */
 #overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(135deg, #ff85ba 0%, #ff4fa1 100%);
@@ -26,46 +25,57 @@ body {
     position: relative;
     display: flex; flex-direction: column; align-items: center;
     width: 100%; max-width: 500px; height: 100%; justify-content: center;
+    padding: 20px;
+}
+
+/* LOGO - Aumentada conforme solicitado */
+.logo-intro-wrapper {
+    z-index: 50; 
+    position: relative;
+    margin-bottom: 25px;
 }
 
 .logo-intro {
-    width: 300px;
-    max-width: 80%;
+    width: 320px; /* Aumentado de 260px para 320px */
+    max-width: 90%;
     filter: drop-shadow(0 12px 25px rgba(0,0,0,0.2));
-    z-index: 10;
-    margin-bottom: 15px;
 }
 
-@keyframes jelly {
-    0%, 100% { transform: scale(1, 1) rotate(0deg); }
-    25% { transform: scale(1.1, 0.9) rotate(2deg); }
-    50% { transform: scale(0.9, 1.1) rotate(-2deg); }
-    75% { transform: scale(1.05, 0.95) rotate(1deg); }
+/* PERSONAGENS DA TELA INICIAL - Aumentados e reposicionados */
+.char-intro {
+    position: absolute;
+    height: 160px; /* Aumentado de 120px para 160px */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    pointer-events: none;
+    z-index: 5; 
+    opacity: 0.95;
 }
-.jelly-anim { animation: jelly 3s infinite ease-in-out; }
 
-.click-aviso { color: white; font-weight: 600; margin-bottom: 20px; font-size: 0.95rem; z-index: 10; text-shadow: 1px 1px 5px rgba(0,0,0,0.2); }
+/* Posicionamento estratégico para não cobrir a logo mesmo sendo maiores */
+.char-t-l { top: 5%; left: 2%; animation: float 3s infinite ease-in-out; }
+.char-t-r { top: 7%; right: 2%; animation: float 3.5s infinite ease-in-out 0.5s; }
+.char-b-l { bottom: 8%; left: 2%; animation: float 4s infinite ease-in-out 0.2s; }
+.char-b-r { bottom: 6%; right: 2%; animation: float 3.2s infinite ease-in-out 0.7s; }
+
+.click-aviso { 
+    color: white; 
+    font-weight: 600; 
+    margin-bottom: 20px; 
+    font-size: 1rem; 
+    z-index: 50; 
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    position: relative;
+}
 
 #btn-abrir {
     background: white; color: #ff1493; border: none;
     padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1.2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer;
-    z-index: 20;
+    z-index: 60; 
+    position: relative;
 }
 
-.char-intro {
-    position: absolute;
-    height: 180px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
-    pointer-events: none;
-    z-index: 5;
-}
-
-.char-t-l { top: 12%; left: 8%; animation: float 3s infinite ease-in-out; }
-.char-t-r { top: 14%; right: 8%; animation: float 3.5s infinite ease-in-out 0.5s; }
-.char-b-l { bottom: 18%; left: 8%; animation: float 4s infinite ease-in-out 0.2s; }
-.char-b-r { bottom: 15%; right: 8%; animation: float 3.2s infinite ease-in-out 0.7s; }
-
+/* --- CONTEÚDO PRINCIPAL --- */
 .main-wrapper {
     background-image: url('back.png');
     background-size: cover;
@@ -75,10 +85,10 @@ body {
     display: flex; flex-direction: column; align-items: center;
     padding: 40px 15px;
     position: relative;
-    z-index: 1; /* Garante que o conteúdo principal esteja acima do fundo mas abaixo de modais */
+    z-index: 1;
 }
 
-.logo-topo { width: 320px; max-width: 90%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); margin-bottom: 20px; }
+.logo-topo { width: 300px; max-width: 90%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); margin-bottom: 20px; }
 
 .trio-fotos {
     display: flex; justify-content: center; align-items: center;
@@ -90,7 +100,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 .moldura img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
-.lateral { width: 100px; height: 100px; }
+.lateral { width: 95px; height: 95px; }
 .principal { width: 140px; height: 140px; border: 4px solid #ff1493; z-index: 2; }
 
 .titulo-script { font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2.3rem; text-shadow: 2px 2px white; margin: 10px 0; }
@@ -105,28 +115,12 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.7);
     position: relative;
-    z-index: 10; /* Garante que o card e seus botões fiquem por cima */
+    z-index: 10;
 }
 
 .card-titulo { font-size: 1.2rem; color: #ff1493; font-weight: 800; margin-bottom: 20px; }
 .info-row { display: flex; justify-content: space-around; border-bottom: 2px dashed #ffc1e3; padding-bottom: 20px; margin-bottom: 20px; }
 .button-group { display: flex; gap: 12px; width: 100%; }
-
-.brinquedos-container {
-    display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap;
-}
-.brinquedo-item {
-    background: white; padding: 10px; border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 85px; height: 85px;
-    display: flex; align-items: center; justify-content: center;
-    animation: float 3s infinite ease-in-out;
-}
-.brinquedo-item:nth-child(2) { animation-delay: 0.5s; }
-.brinquedo-item:nth-child(3) { animation-delay: 1s; }
-.brinquedo-item img {
-    max-width: 100%; max-height: 100%; object-fit: contain;
-}
 
 .btn {
     flex: 1; text-decoration: none; padding: 16px 5px; border-radius: 20px;
@@ -134,76 +128,50 @@ body {
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
     position: relative;
-    z-index: 20; /* Botões com z-index alto para garantir clique */
+    z-index: 20;
 }
 .btn-mapa { background: #ff1493; }
 .btn-confirmar { background: #4caf50; }
 
-.chars-footer { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; }
-.char-move { height: 110px; animation: float 3s infinite ease-in-out; }
-.delay { animation-delay: 1.5s; }
-.assinatura { font-family: 'Pacifico'; font-size: 1.9rem; color: #ff1493; margin-bottom: 50px; }
-
-@keyframes float { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-
-.pulse { animation: pulseAnim 3s infinite ease-in-out; }
-@keyframes pulseAnim { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-.wiggle { animation: wiggleAnim 4s infinite ease-in-out; }
-@keyframes wiggleAnim { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(4deg); } 75% { transform: rotate(-4deg); } }
-
-.reveal { opacity: 0; transform: translateY(50px); transition: 1.2s all cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* Estilos do Indicador de Rolagem */
-.scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #ff1493;
-    font-weight: 600;
-    font-size: 0.9rem;
-    animation: bounce 2s infinite;
-}
-.scroll-indicator .arrow-down {
-    font-size: 1.8rem;
-    margin-top: 5px;
-}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-15px); }
-    60% { transform: translateY(-7px); }
-}
-
-/* --- ESTILOS DOS BALÕES FLUTUANTES --- */
+/* --- BALÕES --- */
 #baloes-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* ESSENCIAL: Permite clicar através dos balões */
-    z-index: 5; /* Colocado atrás do conteúdo principal (z-index: 10) */
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2; 
     overflow: hidden;
 }
 
 .balao-animado {
     position: absolute;
-    bottom: -150px; /* Começa debaixo da tela */
+    bottom: -150px;
     opacity: 0.85;
-    animation: subirBalao linear forwards; /* Animação sobe e para */
+    animation: subirBalao linear forwards;
 }
 
+/* --- ANIMAÇÕES --- */
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
 @keyframes subirBalao {
-    0% {
-        transform: translateY(0) rotate(-5deg);
-    }
-    50% {
-        transform: translateY(-60vh) rotate(5deg);
-    }
-    100% {
-        transform: translateY(-120vh) rotate(-5deg); /* Vai até passar do topo da tela */
-    }
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-125vh) rotate(5deg); }
 }
+
+.jelly-anim { animation: jelly 3s infinite ease-in-out; }
+@keyframes jelly {
+    0%, 100% { transform: scale(1, 1); }
+    25% { transform: scale(1.08, 0.92); }
+    50% { transform: scale(0.92, 1.08); }
+}
+
+.pulse { animation: pulseAnim 3s infinite ease-in-out; }
+@keyframes pulseAnim { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: 1.2s all ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.scroll-indicator { color: #ff1493; font-weight: 600; margin: 10px 0 30px; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } }
+
+.chars-footer { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; }
+.char-move { height: 110px; animation: float 3s infinite ease-in-out; }
+.assinatura { font-family: 'Pacifico'; font-size: 1.9rem; color: #ff1493; margin-bottom: 50px; }
