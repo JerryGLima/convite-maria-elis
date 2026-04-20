@@ -1,3 +1,4 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
@@ -8,7 +9,7 @@ body {
     text-align: center;
 }
 
-/* TELA DE ENTRADA MELHORADA */
+/* TELA DE ENTRADA (OVERLAY) */
 #overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(135deg, #ff85ba 0%, #ff4fa1 100%);
@@ -19,20 +20,20 @@ body {
 
 .intro-content {
     position: relative;
-    z-index: 100; /* Garante que fique acima dos personagens */
+    z-index: 100;
     width: 90%;
     display: flex; flex-direction: column; align-items: center;
 }
 
+/* LOGO DA PÁGINA INICIAL (MAIOR) */
 .logo-intro { 
-    width: 260px; max-width: 80%;
+    width: 310px; /* Aumentada conforme pedido */
+    max-width: 85%;
     filter: drop-shadow(0 12px 25px rgba(0,0,0,0.2));
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.cta-area { margin-top: 10px; }
-
-.click-aviso { color: white; font-weight: 600; margin-bottom: 15px; font-size: 0.9rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+.click-aviso { color: white; font-weight: 600; margin-bottom: 15px; font-size: 0.95rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
 
 #btn-abrir {
     background: white; color: #ff1493; border: none;
@@ -40,43 +41,52 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer;
 }
 
-/* Personagens da Entrada - Posicionamento Seguro */
+/* PERSONAGENS DA ENTRADA */
 .char-intro {
     position: absolute;
-    height: 160px;
+    height: 170px;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
     pointer-events: none;
     z-index: 10;
 }
 
-/* Afastando das quinas para não colidir com o centro */
-.char-t-l { top: 5%; left: -5%; animation: float 3s infinite ease-in-out; }
-.char-t-r { top: 7%; right: -5%; animation: float 3.5s infinite ease-in-out 0.5s; }
-.char-b-l { bottom: 5%; left: -5%; animation: float 4s infinite ease-in-out 0.2s; }
-.char-b-r { bottom: 3%; right: -5%; animation: float 3.2s infinite ease-in-out 0.7s; }
+.char-t-l { top: 5%; left: -6%; animation: float 3s infinite ease-in-out; }
+.char-t-r { top: 7%; right: -6%; animation: float 3.5s infinite ease-in-out 0.5s; }
+.char-b-l { bottom: 5%; left: -6%; animation: float 4s infinite ease-in-out 0.2s; }
+.char-b-r { bottom: 3%; right: -6%; animation: float 3.2s infinite ease-in-out 0.7s; }
 
-/* AJUSTE PARA CELULARES PEQUENOS (A mágica da correção) */
-@media (max-height: 700px) {
-    .char-intro { height: 120px; } /* Diminui os bonecos se a tela for curta */
-    .logo-intro { width: 200px; }
-    .char-t-l { top: 2%; }
-    .char-t-r { top: 2%; }
-    .char-b-l { bottom: 2%; }
-    .char-b-r { bottom: 2%; }
+/* AJUSTE PARA TELAS PEQUENAS */
+@media (max-height: 720px) {
+    .char-intro { height: 130px; }
+    .logo-intro { width: 240px; }
+    .char-t-l { top: 1%; }
+    .char-t-r { top: 1%; }
+    .char-b-l { bottom: 1%; }
+    .char-b-r { bottom: 1%; }
 }
 
-/* ... RESTANTE DO CSS (IGUAL AO ANTERIOR) ... */
-.jelly-anim { animation: jelly 3s infinite ease-in-out; }
-@keyframes jelly { 0%, 100% { transform: scale(1, 1) rotate(0deg); } 25% { transform: scale(1.1, 0.9) rotate(2deg); } 50% { transform: scale(0.9, 1.1) rotate(-2deg); } 75% { transform: scale(1.05, 0.95) rotate(1deg); } }
-.main-wrapper { background-image: url('back.png'); background-size: cover; background-position: center; background-attachment: fixed; width: 100%; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 15px; }
+/* CONTEÚDO PRINCIPAL (DENTRO DO CONVITE) */
+.main-wrapper { 
+    background-image: url('back.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    width: 100%; min-height: 100vh; 
+    display: flex; flex-direction: column; align-items: center; 
+    padding: 40px 15px; 
+}
+
 .logo-topo { width: 300px; max-width: 90%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); margin-bottom: 20px; }
+
 .trio-fotos { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 25px 0; width: 100%; }
 .moldura { background: white; padding: 6px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 .moldura img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
 .lateral { width: 90px; height: 90px; }
 .principal { width: 130px; height: 130px; border: 4px solid #ff1493; z-index: 2; }
+
 .titulo-script { font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2.1rem; text-shadow: 2px 2px white; margin: 10px 0; }
 .subtitulo { font-size: 0.9rem; font-weight: 600; color: #ad1457; margin-bottom: 20px; }
+
 .section { width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
 .card-glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); width: 100%; padding: 25px 20px; border-radius: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.7); }
 .card-titulo { font-size: 1.1rem; color: #ff1493; font-weight: 800; margin-bottom: 20px; }
@@ -85,14 +95,19 @@ body {
 .btn { flex: 1; text-decoration: none; padding: 16px 5px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; color: white; }
 .btn-mapa { background: #ff1493; }
 .btn-confirmar { background: #4caf50; }
+
 .chars-footer { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; }
 .char-move { height: 100px; animation: float 3s infinite ease-in-out; }
 .delay { animation-delay: 1.5s; }
 .assinatura { font-family: 'Pacifico'; font-size: 1.7rem; color: #ff1493; margin-bottom: 50px; }
+
+/* ANIMAÇÕES */
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
 .pulse { animation: pulseAnim 3s infinite ease-in-out; }
 @keyframes pulseAnim { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 .wiggle { animation: wiggleAnim 4s infinite ease-in-out; }
 @keyframes wiggleAnim { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(4deg); } 75% { transform: rotate(-4deg); } }
+.jelly-anim { animation: jelly 3s infinite ease-in-out; }
+@keyframes jelly { 0%, 100% { transform: scale(1, 1) rotate(0deg); } 25% { transform: scale(1.1, 0.9) rotate(2deg); } 50% { transform: scale(0.9, 1.1) rotate(-2deg); } 75% { transform: scale(1.05, 0.95) rotate(1deg); } }
 .reveal { opacity: 0; transform: translateY(50px); transition: 1.2s all cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .reveal.active { opacity: 1; transform: translateY(0); }
