@@ -2,37 +2,31 @@ const btnAbrir = document.getElementById('btn-abrir');
 const musica = document.getElementById('musica');
 const overlay = document.getElementById('overlay');
 
-// Evento de clique para abrir e tocar a música
-btnAbrir.addEventListener('click', function() {
-    
-    // Tenta tocar a música imediatamente
-    // O navegador permite som após o clique no botão
-    musica.play().then(() => {
-        console.log("Música tocando!");
-    }).catch(function(error) {
-        console.error("Erro ao tocar a música:", error);
-    });
-
-    // Esconde a tela rosa de entrada
-    overlay.style.transition = 'opacity 0.8s ease';
+btnAbrir.addEventListener('click', () => {
+    overlay.style.transition = 'opacity 0.8s ease, visibility 0.8s';
     overlay.style.opacity = '0';
-    
-    setTimeout(() => {
-        overlay.style.display = 'none';
-        checkReveal(); // Ativa as animações de entrada
-    }, 800);
+    overlay.style.visibility = 'hidden';
+
+    musica.volume = 0.5;
+    musica.play().catch(e => console.log("Áudio bloqueado"));
+
+    setTimeout(checkReveal, 300);
 });
 
-// Função para animar os itens ao rolar a página
 function checkReveal() {
     const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 60) {
-            el.classList.add('active');
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 60) {
+            element.classList.add('active');
         }
     });
 }
 
 window.addEventListener('scroll', checkReveal);
 window.onload = checkReveal;
+
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
