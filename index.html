@@ -4,56 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- TÍTULO DA PÁGINA -->
     <title>Convite Maria Elis | 8 Anos</title>
 
-    <!-- META TAGS PARA O CARD NO WHATSAPP (Substitua o link se desejar) -->
+    <!-- META TAGS PARA O CARD (OPEN GRAPH) -->
     <meta property="og:title" content="Convite Maria Elis - 8 Anos 💖">
-    <meta property="og:description" content="Você é meu convidado especial! Toque para abrir.">
+    <meta property="og:description" content="Você é meu convidado especial para uma festa muito doce! Toque para abrir.">
     <meta property="og:image" content="logo.png">
     <meta property="og:type" content="website">
+
+    <!-- Configuração para o card aparecer grande no Twitter/iOS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="logo.png">
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Container para os balões flutuantes -->
+    <div id="baloes-container"></div>
+
     <!-- TELA DE ENTRADA (OVERLAY) -->
     <div id="overlay">
-        <!-- Personagens posicionados nas quinas -->
-        <img src="foto1.png" class="char-intro char-t-l">
-        <img src="foto2.png" class="char-intro char-t-r">
-        <img src="foto3.png" class="char-intro char-b-l">
-        <img src="foto4.png" class="char-intro char-b-r">
-
         <div class="intro-content">
+            <img src="foto1.png" alt="Personagem" class="char-intro char-t-l" onerror="this.style.display='none'">
+            <img src="foto2.png" alt="Personagem" class="char-intro char-t-r" onerror="this.style.display='none'">
+            
             <div class="logo-intro-wrapper">
-                <img src="logo.png" alt="Logo Maria Elis" class="logo-intro jelly-anim">
+                <img src="logo.png" alt="Logo Maria Elis" class="logo-intro jelly-anim" onerror="this.style.display='none'">
             </div>
             
-            <div class="cta-area">
-                <p class="click-aviso">Toque para entrar🎵</p>
-                <button id="btn-abrir">ABRIR CONVITE 💖</button>
-            </div>
+            <p class="click-aviso">Toque para entrar com música 🎵</p>
+            <button id="btn-abrir">ABRIR CONVITE 💖</button>
+
+            <img src="foto3.png" alt="Personagem" class="char-intro char-b-l" onerror="this.style.display='none'">
+            <img src="foto4.png" alt="Personagem" class="char-intro char-b-r" onerror="this.style.display='none'">
         </div>
     </div>
 
-    <!-- ÁUDIO -->
+    <!-- Música do convite -->
     <audio id="musica" src="fine.mp3" loop preload="auto"></audio>
 
-    <!-- CONTEÚDO PRINCIPAL (DENTRO DO CONVITE) -->
     <div class="main-wrapper">
         <header class="section reveal">
             <div class="logo-container">
-                <img src="logo.png" alt="Logo" class="logo-topo pulse">
+                <img src="logo.png" alt="Logo" class="logo-topo pulse" onerror="this.style.display='none'">
             </div>
             <div class="trio-fotos">
-                <div class="moldura lateral f-left"><img src="foto2.png"></div>
-                <div class="moldura principal wiggle"><img src="foto1.png"></div>
-                <div class="moldura lateral f-right"><img src="foto3.png"></div>
+                <div class="moldura lateral f-left"><img src="foto2.png" alt="Foto Lateral" onerror="this.style.display='none'"></div>
+                <div class="moldura principal wiggle"><img src="foto1.png" alt="Foto Principal" onerror="this.style.display='none'"></div>
+                <div class="moldura lateral f-right"><img src="foto3.png" alt="Foto Lateral" onerror="this.style.display='none'"></div>
             </div>
             <h1 class="titulo-script">Minha Festa Doce</h1>
             <p class="subtitulo">Você é meu convidado especial!</p>
         </header>
+
+        <!-- Indicador de Rolagem -->
+        <div class="scroll-indicator reveal">
+            <p>Deslize para ver mais</p>
+            <div class="arrow-down">⬇️</div>
+        </div>
 
         <section class="section reveal">
             <div class="card-glass">
@@ -72,9 +83,24 @@
                     <span class="emoji-anim">📍</span>
                     <p><strong>Colégio Elicéu</strong><br>Rua Coronel João Sena, 323 - Centro</p>
                 </div>
-                <div class="button-group">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Colégio+Elicéu+Rua+Colonel+João+Sena+323+Centro" class="btn btn-mapa">VER NO GPS 📍</a>
-                    <a href="https://wa.me/5500000000000?text=Confirmamos+presença!" class="btn btn-confirmar">CONFIRMAR ✅</a>
+                <div class="button-group" style="margin-top: 15px;">
+                    <!-- Links configurados diretamente no HTML para maior compatibilidade -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=Colégio+Elicéu+Rua+Coronel+João+Sena+323+Centro" target="_blank" class="btn btn-mapa">VER NO GPS 📍</a>
+                    <a href="https://wa.me/559981788334?text=Olá!+Confirmamos+presença+na+festa+da+Maria+Elis!" target="_blank" class="btn btn-confirmar">CONFIRMAR ✅</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal">
+            <div class="card-glass">
+                <h2 class="card-titulo">VAMOS BRINCAR!</h2>
+                <p style="font-size: 0.95rem; font-weight: 600; color: #ad1457; margin-bottom: 15px;">
+                    A festa será em um espaço bem grande! Traga para nos divertirmos juntos:
+                </p>
+                <div class="brinquedos-container">
+                    <div class="brinquedo-item"><img src="bicicleta.png" alt="Bicicleta" onerror="this.style.display='none'"></div>
+                    <div class="brinquedo-item"><img src="patins.png" alt="Patins" onerror="this.style.display='none'"></div>
+                    <div class="brinquedo-item"><img src="patinete.png" alt="Patinete" onerror="this.style.display='none'"></div>
                 </div>
             </div>
         </section>
@@ -84,7 +110,7 @@
                 <h2 class="card-titulo">SUGESTÃO DE PRESENTES</h2>
                 <div class="presentes-lista">
                     <p>👗 Roupa: Tam 10 Anos</p>
-                    <p>👟 Calçado: Tam 34</p>
+                    <p>👟 Calçado: Tam 34 ou 35</p>
                     <p>🎁 Brinquedos e Mimos</p>
                 </div>
             </div>
@@ -92,8 +118,8 @@
 
         <footer class="section reveal">
             <div class="chars-footer">
-                <img src="foto4.png" class="char-move">
-                <img src="foto5.png" class="char-move delay">
+                <img src="foto4.png" alt="Personagem" class="char-move" onerror="this.style.display='none'">
+                <img src="foto5.png" alt="Personagem" class="char-move delay" onerror="this.style.display='none'">
             </div>
             <p class="assinatura">Esperamos por você!</p>
         </footer>
