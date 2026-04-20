@@ -28,8 +28,9 @@ body {
     padding: 20px;
 }
 
+/* LOGO E TEXTOS - Prioridade máxima para não serem cobertos */
 .logo-intro-wrapper {
-    z-index: 50; 
+    z-index: 100; /* Aumentado para garantir que fique por cima de tudo */
     position: relative;
     margin-bottom: 25px;
 }
@@ -40,26 +41,12 @@ body {
     filter: drop-shadow(0 12px 25px rgba(0,0,0,0.2));
 }
 
-.char-intro {
-    position: absolute;
-    height: 160px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
-    pointer-events: none;
-    z-index: 5; 
-    opacity: 0.95;
-}
-
-.char-t-l { top: 5%; left: 2%; animation: float 3s infinite ease-in-out; }
-.char-t-r { top: 7%; right: 2%; animation: float 3.5s infinite ease-in-out 0.5s; }
-.char-b-l { bottom: 8%; left: 2%; animation: float 4s infinite ease-in-out 0.2s; }
-.char-b-r { bottom: 6%; right: 2%; animation: float 3.2s infinite ease-in-out 0.7s; }
-
 .click-aviso { 
     color: white; 
     font-weight: 600; 
     margin-bottom: 20px; 
     font-size: 1rem; 
-    z-index: 50; 
+    z-index: 100; /* Garantindo que o texto fique por cima */
     text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
     position: relative;
 }
@@ -68,11 +55,29 @@ body {
     background: white; color: #ff1493; border: none;
     padding: 18px 50px; border-radius: 50px; font-weight: 800; font-size: 1.2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer;
-    z-index: 60; 
+    z-index: 110; /* Botão sempre no topo para clique */
     position: relative;
 }
 
-/* --- CONTEÚDO PRINCIPAL (SEGUNDA PÁGINA) --- */
+/* PERSONAGENS - Colocados em uma camada inferior */
+.char-intro {
+    position: absolute;
+    height: 160px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    pointer-events: none;
+    z-index: 10; /* Reduzido para ficar atrás da logo, texto e botão */
+    opacity: 0.95;
+}
+
+/* Personagens Superiores */
+.char-t-l { top: 5%; left: 2%; animation: float 3s infinite ease-in-out; }
+.char-t-r { top: 7%; right: 2%; animation: float 3.5s infinite ease-in-out 0.5s; }
+
+/* Personagens Inferiores */
+.char-b-l { bottom: 3%; left: 2%; animation: float 4s infinite ease-in-out 0.2s; }
+.char-b-r { bottom: 2%; right: 2%; animation: float 3.2s infinite ease-in-out 0.7s; }
+
+/* --- CONTEÚDO PRINCIPAL --- */
 .main-wrapper {
     background-image: url('back.png');
     background-size: cover;
@@ -87,7 +92,6 @@ body {
 
 .logo-topo { width: 300px; max-width: 90%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); margin-bottom: 20px; }
 
-/* CORREÇÃO DO TRIO DE FOTOS */
 .trio-fotos {
     display: flex; justify-content: center; align-items: center;
     gap: 10px; margin: 25px 0; width: 100%;
@@ -104,23 +108,12 @@ body {
 .moldura img { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; /* Garante que a imagem preencha a moldura sem distorcer */
+    object-fit: cover; 
     border-radius: 14px; 
 }
 
-.lateral { 
-    width: 90px; 
-    height: 90px; 
-    flex-shrink: 0;
-}
-
-.principal { 
-    width: 140px; 
-    height: 140px; 
-    border: 4px solid #ff1493; 
-    z-index: 2; 
-    flex-shrink: 0;
-}
+.lateral { width: 90px; height: 90px; flex-shrink: 0; }
+.principal { width: 140px; height: 140px; border: 4px solid #ff1493; z-index: 2; flex-shrink: 0; }
 
 .titulo-script { font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2.3rem; text-shadow: 2px 2px white; margin: 10px 0; }
 .subtitulo { font-size: 1rem; font-weight: 600; color: #ad1457; margin-bottom: 20px; }
@@ -137,7 +130,6 @@ body {
     z-index: 10;
 }
 
-/* CORREÇÃO DOS BRINQUEDOS */
 .brinquedos-container {
     display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap;
 }
@@ -149,11 +141,7 @@ body {
     animation: float 3s infinite ease-in-out;
     overflow: hidden;
 }
-.brinquedo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Mantém a proporção dos brinquedos */
-}
+.brinquedo-item img { width: 100%; height: 100%; object-fit: contain; }
 
 .btn {
     flex: 1; text-decoration: none; padding: 16px 5px; border-radius: 20px;
@@ -166,7 +154,6 @@ body {
 .btn-mapa { background: #ff1493; }
 .btn-confirmar { background: #4caf50; }
 
-/* --- BALÕES --- */
 #baloes-container {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -182,7 +169,6 @@ body {
     animation: subirBalao linear forwards;
 }
 
-/* --- ANIMAÇÕES --- */
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
 @keyframes subirBalao {
     0% { transform: translateY(0) rotate(-5deg); }
